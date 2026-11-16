@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
+import CameraDemo from '../components/CameraDemo';
 
 export default function ProofScreen() {
   return (
     <View style={styles.container}>
       <Text>Снимка-доказателство</Text>
+      <CameraDemo />
     </View>
   );
 }

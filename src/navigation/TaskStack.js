@@ -1,4 +1,3 @@
-// TasksStack.js
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TasksScreen from '../screens/TasksScreen';
 import TaskDetailsScreen from '../screens/TaskDetailsScreen';
