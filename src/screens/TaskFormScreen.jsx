@@ -135,7 +135,7 @@ export default function TaskFormScreen({ navigation, route }) {
         return (
             <View style={styles.center}>
                 <Text style={styles.errorText}>{loadError}</Text>
-                <PrimaryButton title="Назад" onPress={() => navigation.goBack()} />
+                <PrimaryButton title="Back" onPress={() => navigation.goBack()} />
             </View>
         );
     }
@@ -156,7 +156,7 @@ export default function TaskFormScreen({ navigation, route }) {
                     value={values.title}
                     onChangeText={(text) => setField('title', text)}
                     error={errors.title}
-                    placeholder="например Тренировка 30 мин"
+                    placeholder="for example Workout 30 min"
                 />
 
                 <FormInput
@@ -164,7 +164,7 @@ export default function TaskFormScreen({ navigation, route }) {
                     value={values.description}
                     onChangeText={(text) => setField('description', text)}
                     error={errors.description}
-                    placeholder="Какво точно трябва да се снима като доказателство?"
+                    placeholder="What exactly needs to be photographed as evidence?"
                     multiline
                     numberOfLines={3}
                     textAlignVertical="top"
@@ -191,7 +191,7 @@ export default function TaskFormScreen({ navigation, route }) {
                 {errors.category ? <Text style={styles.fieldError}>{errors.category}</Text> : null}
 
                 <Text style={[styles.label, styles.spaced]}>
-                    Трудност: {values.difficulty} от 5
+                    Difficulty: {values.difficulty} out of 5
                 </Text>
                 <Slider
                     minimumValue={1}
@@ -205,8 +205,8 @@ export default function TaskFormScreen({ navigation, route }) {
 
                 <View style={[styles.switchRow, styles.spaced]}>
                     <View style={styles.switchText}>
-                        <Text style={styles.label}>Всеки ден</Text>
-                        <Text style={styles.hint}>Нужно е доказателство всеки ден, без краен срок</Text>
+                        <Text style={styles.label}>Every day</Text>
+                        <Text style={styles.hint}>An everyday proof is needed without a deadline</Text>
                     </View>
                     <Switch
                         value={values.is_daily}
@@ -217,7 +217,7 @@ export default function TaskFormScreen({ navigation, route }) {
 
                 {!values.is_daily ? (
                     <View style={styles.spaced}>
-                        <Text style={styles.label}>Краен срок (по желание)</Text>
+                        <Text style={styles.label}>Deadline (optional)</Text>
                         <View style={styles.dateRow}>
                             <Pressable
                                 onPress={() => setShowDatePicker(true)}
@@ -229,7 +229,7 @@ export default function TaskFormScreen({ navigation, route }) {
                             </Pressable>
                             {values.deadline ? (
                                 <Pressable onPress={() => setField('deadline', null)}>
-                                    <Text style={styles.clearText}>Махни</Text>
+                                    <Text style={styles.clearText}>Remove</Text>
                                 </Pressable>
                             ) : null}
                         </View>

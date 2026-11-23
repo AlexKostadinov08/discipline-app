@@ -58,7 +58,7 @@ export default function TasksScreen({ navigation }) {
         return (
             <View style={styles.center}>
                 <Text style={styles.errorText}>{error}</Text>
-                <PrimaryButton title="Опитай пак" onPress={handleRetry} />
+                <PrimaryButton title="Try Again" onPress={handleRetry} />
             </View>
         );
     }
@@ -89,16 +89,16 @@ export default function TasksScreen({ navigation }) {
                 }
                 ListEmptyComponent={
                     <View style={styles.empty}>
-                        <Text style={styles.emptyTitle}>Още нямаш задачи</Text>
+                        <Text style={styles.emptyTitle}>No tasks yet</Text>
                         <Text style={styles.emptyText}>
-                            Добави първата и започни да доказваш, че я изпълняваш.
+                            Add the first one and start proving that you have finished it
                         </Text>
                     </View>
                 }
             />
 
             <View style={styles.footer}>
-                <PrimaryButton title="Нова задача" onPress={() => navigation.navigate('TaskForm')} />
+                <PrimaryButton title="New Task" onPress={() => navigation.navigate('TaskForm')} />
             </View>
         </View>
     );
