@@ -1,8 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { colors } from '../constants/theme';
 
-// Поле с етикет отгоре и грешка отдолу.
-// Всички останали props (value, onChangeText, secureTextEntry...) отиват директно в TextInput.
 export default function FormInput({ label, error, ...inputProps }) {
     return (
         <View style={styles.wrapper}>

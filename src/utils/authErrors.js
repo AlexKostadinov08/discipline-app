@@ -1,5 +1,3 @@
-// Supabase връща грешките на английски - тук ги превеждаме за потребителя.
-
 const MESSAGES = {
     invalid_credentials: 'Грешен имейл или парола',
     user_already_exists: 'Вече има акаунт с този имейл',

@@ -1,7 +1,6 @@
 import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 import { colors } from '../constants/theme';
 
-// Бутон, който по време на заявка показва spinner и не може да се натисне втори път
 export default function PrimaryButton({ title, onPress, isLoading = false, disabled = false }) {
     const isDisabled = disabled || isLoading;
 

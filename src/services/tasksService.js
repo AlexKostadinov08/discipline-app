@@ -1,11 +1,5 @@
 import { supabase } from './supabase';
 
-// Всички заявки за задачите са тук. Екраните не говорят директно със Supabase,
-// а викат тези функции - така логиката за данните е на едно място.
-//
-// Не филтрираме по user_id: RLS правилото "own tasks" в Supabase
-// така или иначе връща само задачите на логнатия потребител.
-
 const TASK_FIELDS =
     'id, title, description, category, difficulty, deadline, is_daily, is_active, created_at';
 
@@ -23,7 +17,6 @@ function toFriendlyError(error) {
     return new Error('Нещо се обърка със сървъра. Опитай отново.');
 }
 
-// GET - всички задачи, най-новите първи
 export async function getTasks() {
     const { data, error } = await supabase
         .from('tasks')
@@ -34,7 +27,6 @@ export async function getTasks() {
     return data;
 }
 
-// GET - една задача по id (за детайлите и за формата при редакция)
 export async function getTaskById(taskId) {
     const { data, error } = await supabase
         .from('tasks')
@@ -46,7 +38,6 @@ export async function getTaskById(taskId) {
     return data;
 }
 
-// POST - нова задача. user_id се попълва сам от default auth.uid() в базата.
 export async function createTask(task) {
     const { data, error } = await supabase
         .from('tasks')
@@ -58,7 +49,6 @@ export async function createTask(task) {
     return data;
 }
 
-// PATCH - променяме само подадените полета
 export async function updateTask(taskId, changes) {
     const { data, error } = await supabase
         .from('tasks')
@@ -71,7 +61,6 @@ export async function updateTask(taskId, changes) {
     return data;
 }
 
-// DELETE - доказателствата се трият заедно със задачата (on delete cascade)
 export async function deleteTask(taskId) {
     const { error } = await supabase.from('tasks').delete().eq('id', taskId);
 

@@ -29,15 +29,12 @@ export default function TasksScreen({ navigation }) {
         }
     }, []);
 
-    // useFocusEffect, а не useEffect: зарежда всеки път, когато екранът стане видим.
-    // Така след създаване или редакция на задача и връщане назад списъкът е свеж.
     useFocusEffect(
         useCallback(() => {
             loadTasks().finally(() => setIsLoading(false));
         }, [loadTasks])
     );
 
-    // Pull-to-refresh
     const handleRefresh = async () => {
         setIsRefreshing(true);
         await loadTasks();
@@ -49,7 +46,6 @@ export default function TasksScreen({ navigation }) {
         loadTasks().finally(() => setIsLoading(false));
     };
 
-    // 1. Първо зареждане
     if (isLoading) {
         return (
             <View style={styles.center}>
@@ -58,7 +54,6 @@ export default function TasksScreen({ navigation }) {
         );
     }
 
-    // 2. Грешка и нищо за показване
     if (error && tasks.length === 0) {
         return (
             <View style={styles.center}>
@@ -68,7 +63,6 @@ export default function TasksScreen({ navigation }) {
         );
     }
 
-    // 3. Списъкът (или празно състояние вътре в него, за да работи pull-to-refresh и там)
     return (
         <View style={styles.container}>
             <FlatList

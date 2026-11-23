@@ -3,8 +3,6 @@ import { AppState } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
 
-// SecureStore не обича стойности над ~2 KB, а сесията на Supabase
-// често е по-голяма. Затова я режем на парчета и пазим колко са.
 const CHUNK_SIZE = 1000;
 
 async function removeItem(key) {
@@ -54,7 +52,6 @@ export const supabase = createClient(
     }
 );
 
-// Опресняваме токена само докато приложението е на преден план
 AppState.addEventListener('change', (state) => {
     if (state === 'active') {
         supabase.auth.startAutoRefresh();

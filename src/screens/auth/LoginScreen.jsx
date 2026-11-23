@@ -14,8 +14,6 @@ import PrimaryButton from '../../components/PrimaryButton';
 import { hasErrors, validateEmail } from '../../utils/validators';
 import { colors } from '../../constants/theme';
 
-// При вход проверяваме само дали паролата е попълнена.
-// Правилата за дължина и цифра важат при регистрация.
 function validate(values) {
     return {
         email: validateEmail(values.email),

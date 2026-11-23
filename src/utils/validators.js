@@ -1,4 +1,4 @@
-// Всяка функция връща текст на грешката или null, ако полето е наред.
+import { toDateString } from './dates';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const USERNAME_REGEX = /^[a-zA-Z0-9_]+$/;
@@ -11,7 +11,6 @@ export function validateEmail(email) {
     return null;
 }
 
-// При регистрация - няколко правила наведнъж (това е "complex rule" от изпита)
 export function validatePassword(password) {
     if (!password) return 'Паролата е задължителна';
     if (password.length < 6) return 'Паролата трябва да е поне 6 символа';
@@ -35,7 +34,35 @@ export function validateUsername(username) {
     return null;
 }
 
-// Помощна - true, ако в обекта с грешки има поне една
 export function hasErrors(errors) {
     return Object.values(errors).some(Boolean);
+}
+
+export function validateTitle(title) {
+    const value = title.trim();
+
+    if (!value) return 'Заглавието е задължително';
+    if (value.length < 3) return 'Поне 3 символа';
+    if (value.length > 40) return 'Най-много 40 символа';
+    return null;
+}
+
+export function validateCategory(category) {
+    if (!category) return 'Избери категория';
+    return null;
+}
+
+export function validateDescription(description) {
+    if (description.length > 200) return 'Най-много 200 символа';
+    return null;
+}
+
+export function validateDeadline(deadline, isDaily) {
+    if (isDaily) return null;
+    if (!deadline) return null;
+
+    const today = toDateString(new Date());
+
+    if (deadline < today) return 'Срокът не може да е в миналото';
+    return null;
 }

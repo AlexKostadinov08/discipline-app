@@ -8,7 +8,6 @@ export default function ProfileScreen() {
     const { user, logout } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
 
-    // Името идва от user_metadata, което записахме при регистрацията
     const username = user?.user_metadata?.username ?? 'Без име';
 
     const handleLogout = async () => {
