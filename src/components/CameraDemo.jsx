@@ -27,7 +27,7 @@ export default function CameraDemo() {
         return (
             <View style={styles.wrapper}>
                 <Text>The camera is needed to take photo proof of your finished tasks</Text>
-                <Button title="Разреши камерата" onPress={requestPermission} />
+                <Button title="Allow camera" onPress={requestPermission} />
             </View>
         )
     }
@@ -36,7 +36,7 @@ export default function CameraDemo() {
         return (
             <View style={styles.wrapper}>
                 <Image source={{ uri: photo.uri }} style={styles.frame} />
-                <Button title="Снимай пак" onPress={() => setPhoto(null)} />
+                <Button title="Retake" onPress={() => setPhoto(null)} />
             </View>
         )
     }

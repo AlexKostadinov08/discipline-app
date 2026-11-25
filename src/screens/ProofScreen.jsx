@@ -4,7 +4,7 @@ import CameraDemo from '../components/CameraDemo';
 export default function ProofScreen() {
     return (
         <View style={styles.container}>
-            <Text>Снимка-доказателство</Text>
+            <Text>Photo proof</Text>
             <CameraDemo />
         </View>
     );

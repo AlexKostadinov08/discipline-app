@@ -61,7 +61,7 @@ export default function RegisterScreen({ navigation }) {
 
             if (!isLoggedIn) {
                 setIsLoading(false);
-                Alert.alert('Почти готово', 'Потвърди имейла си и после влез.');
+                Alert.alert('Almost done', 'Confirm your email and then log in.');
                 navigation.navigate('Login');
             }
         } catch (err) {
@@ -82,56 +82,56 @@ export default function RegisterScreen({ navigation }) {
                 keyboardShouldPersistTaps="handled"
             >
                 <Text style={styles.intro}>
-                    Създай акаунт и започни да доказваш, че държиш на думата си.
+                    Create an account and start proving that you keep your word.
                 </Text>
 
                 <FormInput
-                    label="Потребителско име"
+                    label="Username"
                     value={values.username}
                     onChangeText={handleChange('username')}
                     error={errors.username}
-                    placeholder="например alex_08"
+                    placeholder="for example alex_08"
                     autoCapitalize="none"
                 />
 
                 <FormInput
-                    label="Имейл"
+                    label="Email"
                     value={values.email}
                     onChangeText={handleChange('email')}
                     error={errors.email}
-                    placeholder="ime@primer.com"
+                    placeholder="name@example.com"
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoComplete="email"
                 />
 
                 <FormInput
-                    label="Парола"
+                    label="Password"
                     value={values.password}
                     onChangeText={handleChange('password')}
                     error={errors.password}
-                    placeholder="Поне 6 символа и една цифра"
+                    placeholder="At least 6 characters and one digit"
                     secureTextEntry
                     autoCapitalize="none"
                 />
 
                 <FormInput
-                    label="Повтори паролата"
+                    label="Repeat password"
                     value={values.repeatPassword}
                     onChangeText={handleChange('repeatPassword')}
                     error={errors.repeatPassword}
-                    placeholder="Същата парола"
+                    placeholder="The same password"
                     secureTextEntry
                     autoCapitalize="none"
                 />
 
                 {serverError ? <Text style={styles.serverError}>{serverError}</Text> : null}
 
-                <PrimaryButton title="Регистрация" onPress={handleSubmit} isLoading={isLoading} />
+                <PrimaryButton title="Sign up" onPress={handleSubmit} isLoading={isLoading} />
 
                 <Pressable onPress={() => navigation.goBack()} style={styles.link}>
                     <Text style={styles.linkText}>
-                        Имаш акаунт? <Text style={styles.linkAccent}>Влез</Text>
+                        Already have an account? <Text style={styles.linkAccent}>Log in</Text>
                     </Text>
                 </Pressable>
             </ScrollView>

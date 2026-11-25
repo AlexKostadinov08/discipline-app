@@ -5,7 +5,7 @@ export default function TaskDetailsScreen({ route }) {
 
     return (
         <View style={styles.container}>
-            <Text>Детайли на задача: {taskId}</Text>
+            <Text>Task details: {taskId}</Text>
         </View>
     );
 }

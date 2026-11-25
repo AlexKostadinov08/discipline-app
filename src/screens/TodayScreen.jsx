@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function TodayScreen() {
     return (
         <View style={styles.container}>
-            <Text>Днешните задачи</Text>
+            <Text>Today's tasks</Text>
         </View>
     );
 }

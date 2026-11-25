@@ -17,7 +17,7 @@ import { colors } from '../../constants/theme';
 function validate(values) {
     return {
         email: validateEmail(values.email),
-        password: values.password ? null : 'Паролата е задължителна',
+        password: values.password ? null : 'Password is required',
     };
 }
 
@@ -59,37 +59,37 @@ export default function LoginScreen({ navigation }) {
                     contentContainerStyle={styles.content}
                     keyboardShouldPersistTaps="handled"
                 >
-                    <Text style={styles.title}>Дисциплина</Text>
-                    <Text style={styles.subtitle}>Без снимка няма изпълнена задача.</Text>
+                    <Text style={styles.title}>Discipline</Text>
+                    <Text style={styles.subtitle}>No photo, no finished task.</Text>
 
                     <FormInput
-                        label="Имейл"
+                        label="Email"
                         value={values.email}
                         onChangeText={handleChange('email')}
                         error={errors.email}
-                        placeholder="ime@primer.com"
+                        placeholder="name@example.com"
                         keyboardType="email-address"
                         autoCapitalize="none"
                         autoComplete="email"
                     />
 
                     <FormInput
-                        label="Парола"
+                        label="Password"
                         value={values.password}
                         onChangeText={handleChange('password')}
                         error={errors.password}
-                        placeholder="Твоята парола"
+                        placeholder="Your password"
                         secureTextEntry
                         autoCapitalize="none"
                     />
 
                     {serverError ? <Text style={styles.serverError}>{serverError}</Text> : null}
 
-                    <PrimaryButton title="Вход" onPress={handleSubmit} isLoading={isLoading} />
+                    <PrimaryButton title="Log in" onPress={handleSubmit} isLoading={isLoading} />
 
                     <Pressable onPress={() => navigation.navigate('Register')} style={styles.link}>
                         <Text style={styles.linkText}>
-                            Нямаш акаунт? <Text style={styles.linkAccent}>Регистрирай се</Text>
+                            Don't have an account? <Text style={styles.linkAccent}>Sign up</Text>
                         </Text>
                     </Pressable>
                 </ScrollView>

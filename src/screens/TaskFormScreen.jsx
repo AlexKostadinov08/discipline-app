@@ -60,7 +60,7 @@ export default function TaskFormScreen({ navigation, route }) {
     const errors = submitted ? validate(values) : {};
 
     useEffect(() => {
-        navigation.setOptions({ title: isEditMode ? 'Редакция' : 'Нова задача' });
+        navigation.setOptions({ title: isEditMode ? 'Edit Task' : 'New Task' });
     }, [navigation, isEditMode]);
 
     useEffect(() => {
@@ -152,7 +152,7 @@ export default function TaskFormScreen({ navigation, route }) {
                 keyboardShouldPersistTaps="handled"
             >
                 <FormInput
-                    label="Заглавие"
+                    label="Title"
                     value={values.title}
                     onChangeText={(text) => setField('title', text)}
                     error={errors.title}
@@ -160,7 +160,7 @@ export default function TaskFormScreen({ navigation, route }) {
                 />
 
                 <FormInput
-                    label="Описание (по желание)"
+                    label="Description (optional)"
                     value={values.description}
                     onChangeText={(text) => setField('description', text)}
                     error={errors.description}
@@ -170,7 +170,7 @@ export default function TaskFormScreen({ navigation, route }) {
                     textAlignVertical="top"
                 />
 
-                <Text style={styles.label}>Категория</Text>
+                <Text style={styles.label}>Category</Text>
                 <View style={styles.chips}>
                     {CATEGORIES.map((category) => {
                         const isSelected = values.category === category.value;
@@ -224,7 +224,7 @@ export default function TaskFormScreen({ navigation, route }) {
                                 style={[styles.dateButton, errors.deadline && styles.dateButtonError]}
                             >
                                 <Text style={values.deadline ? styles.dateText : styles.datePlaceholder}>
-                                    {values.deadline ? formatDate(values.deadline) : 'Избери дата'}
+                                    {values.deadline ? formatDate(values.deadline) : 'Pick a date'}
                                 </Text>
                             </Pressable>
                             {values.deadline ? (
@@ -249,8 +249,8 @@ export default function TaskFormScreen({ navigation, route }) {
                 {isEditMode ? (
                     <View style={[styles.switchRow, styles.spaced]}>
                         <View style={styles.switchText}>
-                            <Text style={styles.label}>Активна</Text>
-                            <Text style={styles.hint}>Изключи, за да я сложиш на пауза</Text>
+                            <Text style={styles.label}>Active</Text>
+                            <Text style={styles.hint}>Turn off to pause the task</Text>
                         </View>
                         <Switch
                             value={values.is_active}
@@ -264,7 +264,7 @@ export default function TaskFormScreen({ navigation, route }) {
 
                 <View style={styles.submit}>
                     <PrimaryButton
-                        title={isEditMode ? 'Запази промените' : 'Създай задача'}
+                        title={isEditMode ? 'Save changes' : 'Create task'}
                         onPress={handleSubmit}
                         isLoading={isSaving}
                     />

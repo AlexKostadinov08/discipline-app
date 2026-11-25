@@ -1,10 +1,10 @@
 const MESSAGES = {
-    invalid_credentials: 'Грешен имейл или парола',
-    user_already_exists: 'Вече има акаунт с този имейл',
-    email_exists: 'Вече има акаунт с този имейл',
-    weak_password: 'Паролата е твърде слаба',
-    email_not_confirmed: 'Имейлът още не е потвърден',
-    over_request_rate_limit: 'Твърде много опити. Опитай пак след малко',
+    invalid_credentials: 'Wrong email or password',
+    user_already_exists: 'An account with this email already exists',
+    email_exists: 'An account with this email already exists',
+    weak_password: 'The password is too weak',
+    email_not_confirmed: 'The email is not confirmed yet',
+    over_request_rate_limit: 'Too many attempts. Please try again in a moment',
 };
 
 export function translateAuthError(error) {
@@ -17,8 +17,8 @@ export function translateAuthError(error) {
         error?.message?.includes('Network request failed');
 
     if (isNetworkError) {
-        return 'Няма връзка със сървъра. Провери интернета.';
+        return 'Cannot reach the server. Check your internet connection.';
     }
 
-    return error?.message || 'Нещо се обърка. Опитай отново.';
+    return error?.message || 'Something went wrong. Please try again.';
 }

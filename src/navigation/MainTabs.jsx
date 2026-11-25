@@ -8,12 +8,12 @@ const Tab = createBottomTabNavigator();
 export default function MainTabs() {
     return (
         <Tab.Navigator screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="TodayTab" component={TodayStack} options={{ title: 'Днес' }} />
-            <Tab.Screen name="TasksTab" component={TasksStack} options={{ title: 'Задачи' }} />
+            <Tab.Screen name="TodayTab" component={TodayStack} options={{ title: 'Today' }} />
+            <Tab.Screen name="TasksTab" component={TasksStack} options={{ title: 'Tasks' }} />
             <Tab.Screen
                 name="ProfileTab"
                 component={ProfileScreen}
-                options={{ title: 'Профил', headerShown: true }}
+                options={{ title: 'Profile', headerShown: true }}
             />
         </Tab.Navigator>
     );

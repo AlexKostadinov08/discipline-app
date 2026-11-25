@@ -5,10 +5,10 @@ import { colors } from '../constants/theme';
 
 export default function TaskCard({ task, onPress }) {
     const schedule = task.is_daily
-        ? 'Всеки ден'
+        ? 'Every day'
         : task.deadline
-            ? `Срок: ${formatDate(task.deadline)}`
-            : 'Без срок';
+            ? `Due: ${formatDate(task.deadline)}`
+            : 'No deadline';
 
     return (
         <Pressable
@@ -21,7 +21,7 @@ export default function TaskCard({ task, onPress }) {
         >
             <View style={styles.row}>
                 <Text style={styles.category}>{getCategoryLabel(task.category)}</Text>
-                {!task.is_active ? <Text style={styles.paused}>На пауза</Text> : null}
+                {!task.is_active ? <Text style={styles.paused}>Paused</Text> : null}
             </View>
 
             <Text style={styles.title} numberOfLines={2}>
@@ -30,7 +30,7 @@ export default function TaskCard({ task, onPress }) {
 
             <View style={styles.row}>
                 <Text style={styles.meta}>{schedule}</Text>
-                <Text style={styles.meta}>Трудност {task.difficulty}/5</Text>
+                <Text style={styles.meta}>Difficulty {task.difficulty}/5</Text>
             </View>
         </Pressable>
     );

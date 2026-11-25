@@ -8,7 +8,7 @@ export default function ProfileScreen() {
     const { user, logout } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
 
-    const username = user?.user_metadata?.username ?? 'Без име';
+    const username = user?.user_metadata?.username ?? 'No name';
 
     const handleLogout = async () => {
         setIsLoading(true);
@@ -16,7 +16,7 @@ export default function ProfileScreen() {
             await logout();
         } catch (err) {
             setIsLoading(false);
-            Alert.alert('Грешка', err.message);
+            Alert.alert('Error', err.message);
         }
     };
 
@@ -26,7 +26,7 @@ export default function ProfileScreen() {
             <Text style={styles.email}>{user?.email}</Text>
 
             <View style={styles.buttonWrapper}>
-                <PrimaryButton title="Изход" onPress={handleLogout} isLoading={isLoading} />
+                <PrimaryButton title="Log out" onPress={handleLogout} isLoading={isLoading} />
             </View>
         </View>
     );

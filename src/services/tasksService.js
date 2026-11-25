@@ -11,10 +11,10 @@ function toFriendlyError(error) {
         message.includes('Network request failed') || message.includes('Failed to fetch');
 
     if (isNetworkError) {
-        return new Error('Няма връзка със сървъра. Провери интернета.');
+        return new Error('Cannot reach the server. Check your internet connection.');
     }
 
-    return new Error('Нещо се обърка със сървъра. Опитай отново.');
+    return new Error('Something went wrong on the server. Please try again.');
 }
 
 export async function getTasks() {
