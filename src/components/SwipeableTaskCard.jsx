@@ -28,7 +28,7 @@ export default function SwipeableTaskCard(props) {
 
     return (
         <GestureDetector gesture={pan}>
-            <TaskCard {...props} style={animatedStyle} />
+            <TaskCard {...props} style={useAnimatedStyle} />
         </GestureDetector>
     );
 }

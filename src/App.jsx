@@ -9,7 +9,7 @@ export default function App() {
     return (
         <SafeAreaProvider>
             <AuthProvider>
-                <GestureHandlerRootView>
+                <GestureHandlerRootView style={{ flex: 1 }}>
                     <NavigationContainer>
                         <RootNavigator />
                     </NavigationContainer>

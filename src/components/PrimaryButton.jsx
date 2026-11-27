@@ -1,8 +1,15 @@
 import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 import { colors } from '../constants/theme';
 
-export default function PrimaryButton({ title, onPress, isLoading = false, disabled = false }) {
+export default function PrimaryButton({
+    title,
+    onPress,
+    isLoading = false,
+    disabled = false,
+    variant = 'primary',
+}) {
     const isDisabled = disabled || isLoading;
+    const isOutline = variant === 'outline';
 
     return (
         <Pressable
@@ -10,14 +17,16 @@ export default function PrimaryButton({ title, onPress, isLoading = false, disab
             disabled={isDisabled}
             style={({ pressed }) => [
                 styles.button,
+                variant === 'danger' && styles.danger,
+                isOutline && styles.outline,
                 pressed && styles.pressed,
                 isDisabled && styles.disabled,
             ]}
         >
             {isLoading ? (
-                <ActivityIndicator color={colors.onPrimary} />
+                <ActivityIndicator color={isOutline ? colors.primary : colors.onPrimary} />
             ) : (
-                <Text style={styles.text}>{title}</Text>
+                <Text style={[styles.text, isOutline && styles.outlineText]}>{title}</Text>
             )}
         </Pressable>
     );
@@ -32,6 +41,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         minHeight: 50,
     },
+    danger: {
+        backgroundColor: colors.danger,
+    },
+    outline: {
+        backgroundColor: 'transparent',
+        borderWidth: 1.5,
+        borderColor: colors.primary,
+    },
     pressed: {
         opacity: 0.85,
     },
@@ -42,5 +59,8 @@ const styles = StyleSheet.create({
         color: colors.onPrimary,
         fontSize: 16,
         fontWeight: '700',
+    },
+    outlineText: {
+        color: colors.primary,
     },
 });
